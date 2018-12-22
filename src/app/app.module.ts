@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 
 import * as $ from 'jquery';
 import { Routes, RouterModule } from '@angular/router';
-import { BlankComponent } from './layouts/blank/blank.component';
-import { LoginComponent } from './autenticacion/login/login.component';
-import { RegistrarComponent } from './autenticacion/registrar/registrar.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AutenticacionModule } from './autenticacion/autenticacion.module';
@@ -17,23 +14,28 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { appRoutes } from './app.routes';
 import { AdministradorModule } from './administrador/administrador.module';
 import { ServiceModule } from './services/service.module';
+import { ShareModule } from './share/share.module';
+import { NavbarComponent } from './share/navbar/navbar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule,
+    NgbModule.forRoot(),
     ServiceModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     BrowserAnimationsModule,
     AutenticacionModule,
-    AdministradorModule
+    AdministradorModule,
+    ShareModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

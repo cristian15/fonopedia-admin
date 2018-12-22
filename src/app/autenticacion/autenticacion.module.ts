@@ -15,6 +15,7 @@ import { UsuarioService } from '../services/service.index';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { ShareModule } from '../share/share.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    ShareModule
   ],
   declarations: [
     LoginComponent,
