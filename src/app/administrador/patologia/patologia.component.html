@@ -1,0 +1,143 @@
+<div *ngIf="patologia">
+  <mat-tab-group>
+    <mat-tab label="Información"> 
+      <hr>
+      <button type="button" class="btn btn-primary" (click)="actualizarInfo()">Actualizar</button>
+      <hr>
+      <div class="form-group">
+        <label >Nombre</label>
+        <input type="text" [(ngModel)]="patologia.nombre" class="form-control"  >
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Área</label>
+        <input type="text" [(ngModel)]="patologia.area" class="form-control" id="exampleFormControlInput1" >
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">General</label>
+        <input type="text" [(ngModel)]="patologia.general" class="form-control" id="exampleFormControlInput1" >
+      </div>  
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Descripción</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.descripcion" rows="5"> {{patologia.descripcion}} </textarea>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fotos/Tags"> 
+      <br>
+      
+      <div class="row col-12">
+        <div class="col-12 col-md-6">
+          <legend>Fotos</legend>
+          <div class="alert alert-danger" role="alert" *ngIf="patologia.fotos.length==0">
+            No hay fotos Disponibles
+          </div>
+          <div class="input-group mb-3">
+            <input #fotosInput [disabled]="patologia.fotos.length>=4" type="file" multiple 
+            (change)="fileChangeEvent($event)"  class="form-control" name="fotos">
+            <div class="input-group-append">
+                <button type="button" [disabled]="patologia.fotos.length>=4" class="btn btn-primary" (click)="actualizar()">Subir Fotos</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card col-3 border" *ngFor="let f of patologia.fotos" >
+              <div class="card-body">
+                <span class="badge badge-danger" (click)="borrarFoto(f)">
+                  <span class="fa fa-trash pointer"></span>
+                </span>
+                <img [src]="f | imagen" width="120%" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <legend>Tags</legend>
+          <div class="input-group mb-3">
+            <input #tag type="text" class="form-control" name="tags">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-success" (click)="addTag(tag.value)">Agregar Tag</button>
+            </div>
+          </div>
+          <h3>
+            <span *ngFor="let t of patologia.tags" class="badge badge-pill badge-warning"> {{t}} 
+              <div class="btn" style="padding: 0;" (click)="removeTag(t)"><span class="fa fa-remove bnt" style="color:red"></span></div>
+            </span>
+          </h3>
+          
+        </div>
+      </div>
+      
+        
+    </mat-tab>
+    <mat-tab label="Audios/Videos"> 
+      <div class="row col-12">
+        <div class="col-6">
+          <legend>Videos</legend>
+          <div class="input-group mb-3">
+              <input id="video" #video type="text" class="form-control" name="tags">
+              <div class="input-group-append">
+                  <button type="button" class="btn btn-success" (click)="addVideo(video.value)">Agregar Video</button>
+              </div>
+            </div>
+          <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
+              <thead>
+                <tr>
+                  <th data-tablesaw-sortable-col></th> 
+                  <th data-tablesaw-sortable-col>Link</th>  
+                  <th data-tablesaw-sortable-col></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let v of patologia.videos let i=index " >
+                    <td> {{i+1}} </td>
+                    <td class="title">
+                      <b class=" tablesaw-cell-label">Link</b>
+                      {{ v }}
+                    </td>
+                    <td class="title">
+                      <div aria-label="Acciones" class="btn-group" role="group">
+                          <button  class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                             placement="top" ngbTooltip="Eliminar" (click)="deleteVideo(v)"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+          <legend>Audios</legend>
+          <div class="input-group mb-3">
+              <input #audio type="text" class="form-control" name="tags">
+              <div class="input-group-append">
+                  <button type="button" class="btn btn-success" (click)="addAudio(audio.value)">Agregar Audio</button>
+              </div>
+            </div>
+          <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
+              <thead>
+                <tr>
+                  <th data-tablesaw-sortable-col></th>
+                  <th data-tablesaw-sortable-col>Link</th>  
+                  <th data-tablesaw-sortable-col></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let a of patologia.audios let i=index" >
+                    <td>{{i+1}} </td>
+                    <td class="title">
+                      <b class=" tablesaw-cell-label">Link</b>
+                      {{ a }}
+                    </td>
+                    <td class="title">
+                      <div aria-label="Acciones" class="btn-group" role="group">
+                          <button  class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                             placement="top" ngbTooltip="Eliminar" (click)="deleteAudio(a)"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+

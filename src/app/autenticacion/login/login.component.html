@@ -9,16 +9,19 @@
       <img src="assets/login.png" id="icon" alt="User Icon" />
     </div>
 
-    <!-- Login Form -->
-    <div class="row"> <mat-form-field class="example-full-width">
+    <div class="log">
+      <div class="row"> <mat-form-field class="example-full-width">
       <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-    </mat-form-field></div>
-    <div class="row"> <mat-form-field class="example-full-width">
-      <input matInput placeholder="Contraseña" [(ngModel)]="password"type="password" name="password" required>
-    </mat-form-field></div>
-   
-    <div class="row"><button mat-raised-button (click)="login()" color="primary">Entrar</button></div>
-    <br><br>
+      </mat-form-field></div>
+      <div class="row"> <mat-form-field class="example-full-width">
+        <input matInput placeholder="Contraseña" [(ngModel)]="password"type="password" name="password" required>
+      </mat-form-field></div>
+    
+      <div class="row"><button mat-raised-button (click)="login()" color="primary">Entrar</button></div>
+      <br><br>
+    </div>
+    <!-- Login Form -->
+    
 
     <!-- Remind Passowrd -->
     <!-- <div id="formFooter">

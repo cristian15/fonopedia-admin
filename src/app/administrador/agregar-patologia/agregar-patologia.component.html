@@ -1,0 +1,35 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar Patología</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form>
+          <div class="form-group">
+              <label >Nombre</label>
+              <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control"  >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Área</label>
+              <input type="text" [(ngModel)]="area" name="area" class="form-control" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">General</label>
+              <input type="text" [(ngModel)]="general" name="general" class="form-control" >
+            </div>  
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descripción</label>
+              <textarea class="form-control" [(ngModel)]="descripcion" name="descripcion" rows="5"></textarea>
+            </div>
+        </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="guardar(modal)">Guardar</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+  </div>
+</ng-template>
+
+<button type="button" class="btn btn-primary" (click)="open(content)">Agregar</button>

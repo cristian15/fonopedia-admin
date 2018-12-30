@@ -16,6 +16,7 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { ServiceModule } from './services/service.module';
 import { ShareModule } from './share/share.module';
 import { NavbarComponent } from './share/navbar/navbar.component';
+import { UploadService } from './services/service.index';
 
 
 
@@ -35,6 +36,7 @@ import { NavbarComponent } from './share/navbar/navbar.component';
     ShareModule
   ],
   providers: [
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

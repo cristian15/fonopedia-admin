@@ -9,20 +9,37 @@ import { ADMIN_ROUTES } from './administrador.routes';
 import { RouterModule } from '@angular/router';
 
 import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+import { PatologiaComponent } from './patologia/patologia.component';
+import { AgregarPatologiaComponent } from './agregar-patologia/agregar-patologia.component';
+
+import { FormsModule } from '@angular/forms';
+import { EnviarSubscripcionComponent } from './enviar-subscripcion/enviar-subscripcion.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     ADMIN_ROUTES,
     ShareModule,
     PipesModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatFormFieldModule
   ],
   declarations: [
     InicioComponent,
     PatologiasComponent,
-    SubcritosComponent
+    SubcritosComponent,
+    PatologiaComponent,
+    AgregarPatologiaComponent,
+    EnviarSubscripcionComponent
   ]
 })
 export class AdministradorModule { }
