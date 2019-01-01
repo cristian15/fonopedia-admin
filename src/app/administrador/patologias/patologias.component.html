@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     
-      <tr *ngFor="let p of patologias " >
+      <tr *ngFor="let p of rows " >
         <td class="title">
           <b class=" tablesaw-cell-label">Area</b>
           {{ p.area | titlecase  }}
@@ -47,3 +47,5 @@
     <b>Total {{patologias.length}} </b> 
   </tfoot>
 </table>
+
+<app-paginacion [offset]="offset" [limit]="limit" [size]="patologias.length" (pageChange)="onPageChange($event)"></app-paginacion>

@@ -20,6 +20,10 @@
         <label for="exampleFormControlTextarea1">Descripción</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.descripcion" rows="5"> {{patologia.descripcion}} </textarea>
       </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Referencias</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.referencias" rows="3"> {{patologia.referencias}} </textarea>
+      </div>
     </mat-tab>
     <mat-tab label="Fotos/Tags"> 
       <br>
@@ -90,7 +94,7 @@
                     <td> {{i+1}} </td>
                     <td class="title">
                       <b class=" tablesaw-cell-label">Link</b>
-                      {{ v }}
+                      <a href="{{v}}" target="_blank"> {{ v }}</a>
                     </td>
                     <td class="title">
                       <div aria-label="Acciones" class="btn-group" role="group">
@@ -123,7 +127,7 @@
                     <td>{{i+1}} </td>
                     <td class="title">
                       <b class=" tablesaw-cell-label">Link</b>
-                      {{ a }}
+                      <a href="{{a}}" target="_blank"> {{ a }}</a>
                     </td>
                     <td class="title">
                       <div aria-label="Acciones" class="btn-group" role="group">

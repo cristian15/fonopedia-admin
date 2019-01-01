@@ -10,15 +10,30 @@ import swal from 'sweetalert2';
 })
 export class SubcritosComponent implements OnInit {
 
-  subscritos: Subscrito[];
+  offset = 0;
+  limit = 10;
+
+  subscritos = [];
+  rows = [];
   constructor( private _subscritoService: SubscritosService) { }
 
   ngOnInit() {
 
     this._subscritoService.getSubscritos().subscribe(subs=>{
-      console.log(subs);
       this.subscritos= subs;
+      this.onPageChange(0);
     });
+  }
+  onPageChange(offset) {
+    this.offset = offset;
+    const tempo: Subscrito[] = [];
+    var j =offset;
+
+    while(j< this.limit+offset && j< this.subscritos.length ){
+        tempo.push(this.subscritos[j]);
+        j++;
+    }        
+    this.rows = tempo;
   }
 
   borrar(s){

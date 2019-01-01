@@ -19,6 +19,7 @@ import { AgregarPatologiaComponent } from './agregar-patologia/agregar-patologia
 
 import { FormsModule } from '@angular/forms';
 import { EnviarSubscripcionComponent } from './enviar-subscripcion/enviar-subscripcion.component';
+import { PaginacionComponent } from '../share/paginacion/paginacion.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { EnviarSubscripcionComponent } from './enviar-subscripcion/enviar-subscr
     SubcritosComponent,
     PatologiaComponent,
     AgregarPatologiaComponent,
-    EnviarSubscripcionComponent
+    EnviarSubscripcionComponent,
+    PaginacionComponent
   ]
 })
 export class AdministradorModule { }

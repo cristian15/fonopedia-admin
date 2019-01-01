@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate {
     }
     return true; */
     if (this._usuarioService.estaLogueado() && !this.jwt.isTokenExpired(this._usuarioService.token)) {
-      console.log('Paso LoginGuard');
+      //console.log('Paso LoginGuard');
       return true;
   } else {
       console.log('Bloqueado por LoginGuard');

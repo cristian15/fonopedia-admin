@@ -12,15 +12,31 @@ export class PatologiasComponent implements OnInit {
 
   constructor(private _patologiasService: PatologiasService) { }
 
+  offset = 0;
+  limit = 10;
+
   patologias = [];
+  rows = [];
   ngOnInit() {
     this.load();
   }
 
+
+  onPageChange(offset) {
+    this.offset = offset;
+    const tempo: Patologia[] = [];
+    var j =offset;
+
+    while(j< this.limit+offset && j< this.patologias.length ){
+        tempo.push(this.patologias[j]);
+        j++;
+    }        
+    this.rows = tempo;
+  }
   load(){
     this._patologiasService.getPatologias().subscribe(patologias =>{
       this.patologias = patologias;
-      console.log(patologias);
+      this.onPageChange(0);
     });
   }
 

@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let s of subscritos" >
+        <tr *ngFor="let s of rows" >
           <td class="title">
             <b class=" tablesaw-cell-label">Nombre</b>
             {{ s.nombre | titlecase  }}
@@ -30,3 +30,4 @@
       <b>Total {{subscritos.length}} </b> 
     </tfoot>
   </table>
+  <app-paginacion [offset]="offset" [limit]="limit" [size]="subscritos.length" (pageChange)="onPageChange($event)"></app-paginacion>

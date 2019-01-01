@@ -25,12 +25,10 @@ export class PatologiaComponent implements OnInit {
       const _id = params['id'];   // toma el parametro id desde la URL
       this._patologiaService.getPatologia(_id).subscribe(p=>{ 
         this.patologia = p;
-        console.log(this.patologia);
       })
       
   });    
   }
-
   actualizar(){
     if(this.filesToUpload.length>0){
       this._patologiaService.editPatologia(this.patologia._id, this.patologia, this.filesToUpload).subscribe(p =>{
@@ -41,9 +39,6 @@ export class PatologiaComponent implements OnInit {
       this._patologiaService.editPatologia(this.patologia._id, this.patologia).subscribe();
     }
   }
-
-  
-
   actualizarInfo(){
     this._patologiaService.editPatologia(this.patologia._id, this.patologia).subscribe(p =>{
       swal('Patologia Actualizada!', '' , 'success');
