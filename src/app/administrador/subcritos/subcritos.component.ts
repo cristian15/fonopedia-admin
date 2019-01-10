@@ -47,8 +47,12 @@ export class SubcritosComponent implements OnInit {
       cancelButtonText: 'No'
         }).then((result) => {
             if (result.value) {
-                  this.subscritos.splice(this.subscritos.indexOf(s),1);
-                  this._subscritoService.delete(s._id).subscribe();
+                  this._subscritoService.delete(s._id).subscribe(res=>{
+                    this.subscritos.splice(this.subscritos.indexOf(s),1);
+                    this.rows = this.subscritos;
+                  });
+                  
+                  
                 
                 swal(
                     'Eliminado!',

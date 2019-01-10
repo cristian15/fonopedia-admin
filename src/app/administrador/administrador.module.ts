@@ -20,6 +20,9 @@ import { AgregarPatologiaComponent } from './agregar-patologia/agregar-patologia
 import { FormsModule } from '@angular/forms';
 import { EnviarSubscripcionComponent } from './enviar-subscripcion/enviar-subscripcion.component';
 import { PaginacionComponent } from '../share/paginacion/paginacion.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   imports: [
@@ -41,7 +44,10 @@ import { PaginacionComponent } from '../share/paginacion/paginacion.component';
     PatologiaComponent,
     AgregarPatologiaComponent,
     EnviarSubscripcionComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    UsuariosComponent,
+    AgregarUsuarioComponent,
+    PerfilUsuarioComponent
   ]
 })
 export class AdministradorModule { }

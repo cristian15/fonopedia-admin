@@ -15,5 +15,8 @@ import { ImagenPipe } from './imagen.pipe';
     ImagenUsuarioPipe,
     ImagenPipe
   ]
+  
 })
-export class PipesModule { }
+export class PipesModule {
+ 
+ }

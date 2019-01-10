@@ -1,0 +1,24 @@
+<div class="row">
+  <!-- Column -->
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <div class="m-t-30 text-center">
+                  <input type="file" style="display: none" #imagenPerfil (change)="cambiarImagen($event)">
+                  <img [src]="_usuario.usuario | imagenUsuario " class="img-circle pointer" width="150" (click)="imagenPerfil.click()" />
+                  <h4 class="card-title m-t-10">{{ _usuario.usuario.nombre }}</h4>
+                  <h6 class="card-subtitle">{{ _usuario.usuario.email }}</h6>
+                  <!-- <div class="row text-center justify-content-md-center">
+                      <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">254</font></a></div>
+                      <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i> <font class="font-medium">54</font></a></div>
+                  </div> -->
+              </div>
+          </div>
+          <div>
+              <hr> </div>
+          <div class="card-body"> <small class="text-muted">Email </small>
+              <h6>{{ _usuario.usuario.email }}</h6>
+          </div>
+      </div>
+  </div>
+</div>

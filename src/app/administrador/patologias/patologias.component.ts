@@ -50,8 +50,10 @@ export class PatologiasComponent implements OnInit {
       cancelButtonText: 'No'
         }).then((result) => {
             if (result.value) {
-                  this.patologias.splice(this.patologias.indexOf(p),1);
-                  this._patologiasService.delete(p._id).subscribe();
+                  this._patologiasService.delete(p._id).subscribe(res =>{
+                    this.patologias.splice(this.patologias.indexOf(p),1);
+                    this.rows = this.patologias;
+                  });
                 
                 swal(
                     'Eliminada!',

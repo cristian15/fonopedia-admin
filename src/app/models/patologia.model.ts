@@ -9,6 +9,9 @@ export class Patologia {
         public videos:                         string[],
         public tags:                           string[],
         public audios:                         string[],
-        public _id?:                           string,
+        public visitas:                        Date[],
+        public _id?:                           string
+        
+        
     ) {}
 }

@@ -11,10 +11,10 @@ export class UploadService {
 
     }
 
-    subirArchivo( archivo: File ) {
+    subirArchivoRuta( archivo: File, item: string, id:string ) {
         const file = new FormData();
         file.append('archivo', archivo);
-        return this.http.post(URL_UPLOAD + this._usuarioService.getToken(), file);
+        return this.http.post(URL_UPLOAD +'/'+item+'/'+id  + this._usuarioService.getToken(), file);
     }
 
     subirVariosArchivos( archivos: File[] ) {

@@ -28,9 +28,12 @@ export class UsuarioService {
     editarUsuario(usuario: Usuario) {
         return this.http.put(URL_USUARIOS + this.getToken(), usuario).map((res: any) => res.usuario);
     }
+    eliminarUsuario(usuario: Usuario) {
+        return this.http.delete(URL_USUARIOS+'/'+usuario._id + this.getToken()).map((res: any) => res.usuario);
+    }
 
     crearUsuario(usuario: Usuario) {
-        return this.http.post(URL_USUARIOS, usuario).map((res: any) => {
+        return this.http.post(URL_USUARIOS+ this.getToken(), usuario).map((res: any) => {
             swal('Usuario Creado', `Bienvenido ${res.usuario.nombre}`, 'success');
             return res.usuario;
         });

@@ -4,6 +4,8 @@ import { PatologiasComponent } from "./patologias/patologias.component";
 import { SubcritosComponent } from "./subcritos/subcritos.component";
 import { AuthGuardService as AuthGuard } from '../autenticacion/services/auth-guard.service';
 import { PatologiaComponent } from "./patologia/patologia.component";
+import { UsuariosComponent } from "./usuarios/usuarios.component";
+import { PerfilUsuarioComponent } from "./perfil-usuario/perfil-usuario.component";
 
 const administradorRouting: Routes = [
         {
@@ -28,6 +30,18 @@ const administradorRouting: Routes = [
             component: SubcritosComponent,
             canActivate: [AuthGuard],
             data: { title: 'Subcritos' }
+        },
+        {
+            path: 'usuarios',
+            component: UsuariosComponent,
+            canActivate: [AuthGuard],
+            data: { title: 'Usuarios' }
+        },
+        {
+            path: 'perfil',
+            component: PerfilUsuarioComponent,
+            canActivate: [AuthGuard],
+            data: { title: 'Perfil' }
         }
         
 ];

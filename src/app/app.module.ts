@@ -17,18 +17,20 @@ import { ServiceModule } from './services/service.module';
 import { ShareModule } from './share/share.module';
 import { NavbarComponent } from './share/navbar/navbar.component';
 import { UploadService } from './services/service.index';
+import { PipesModule } from './pipes/pipes.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     ServiceModule,
+    PipesModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     BrowserAnimationsModule,
     AutenticacionModule,

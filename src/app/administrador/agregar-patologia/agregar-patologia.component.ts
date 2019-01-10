@@ -37,7 +37,8 @@ export class AgregarPatologiaComponent implements OnInit {
       videos:         [],
       tags:           [],
       audios:         [],
-      referencias:    ""
+      referencias:    "",
+      visitas:        [new Date()]
     }
 
     this._patologiaService.addPatologia(newPatologia).subscribe(p=>{
