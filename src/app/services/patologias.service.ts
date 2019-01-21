@@ -25,7 +25,7 @@ export class PatologiasService {
             this.editPatologia(patologia._id,patologia).subscribe();
         });
     } 
-    return this.http.put(URL_SERVICIOS + '/patologias/' + id + this._usuarioService.getToken(), patologia)
+    return this.http.put(URL_SERVICIOS + '/patologias/' + id , patologia)
         .map(() => {
          // swal('Patologia Actualizada!', '' , 'success');
         });

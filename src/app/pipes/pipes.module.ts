@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImagenUsuarioPipe } from './imagen-usuario.pipe';
 import { ImagenPipe } from './imagen.pipe';
+import { TruncarPipe } from './truncar.pipe';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { ImagenPipe } from './imagen.pipe';
   ],
   declarations: [
     ImagenUsuarioPipe,
-    ImagenPipe
+    ImagenPipe,
+    TruncarPipe
   ],
   exports:[
     ImagenUsuarioPipe,
-    ImagenPipe
+    ImagenPipe,
+    TruncarPipe
   ]
   
 })

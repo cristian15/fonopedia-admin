@@ -72,19 +72,53 @@
         
     </mat-tab>
     <mat-tab label="Audios/Videos"> 
+
+      <ng-template #content let-modalVideo>
+          <div class="modal-header">
+            <h4 class="modal-title">Agregar Video</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modalVideo.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label >Titulo</label>
+                      <input type="text" [(ngModel)]="titulo_video" name="nombre" class="form-control"  >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">ID Video</label>
+                      <input type="text" [(ngModel)]="id_video" name="area" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Descripción</label>
+                      <textarea class="form-control" [(ngModel)]="descripcion_video" name="descripcion" rows="5"></textarea>
+                    </div>
+                </form>
+        
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="AgregarVideo(modalVideo)">Guardar</button>
+            <button type="button" class="btn btn-light" (click)="modalVideo.close('Close click')">Cerrar</button>
+          </div>
+        </ng-template>
+        
       <div class="row col-12">
         <div class="col-6">
           <legend>Videos</legend>
-          <div class="input-group mb-3">
+          <button type="button" class="btn btn-success" (click)="modalService.open(content, { size: 'lg' })">Agregar Video</button>
+          <!-- <div class="input-group mb-3">
               <input id="video" #video type="text" class="form-control" name="tags">
               <div class="input-group-append">
-                  <button type="button" class="btn btn-success" (click)="addVideo(video.value)">Agregar Video</button>
+                  
               </div>
-            </div>
+            </div> -->
           <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
               <thead>
                 <tr>
                   <th data-tablesaw-sortable-col></th> 
+                  <th data-tablesaw-sortable-col>Titulo</th>
+                  <th data-tablesaw-sortable-col>Descripcion</th>
                   <th data-tablesaw-sortable-col>Link</th>  
                   <th data-tablesaw-sortable-col></th>
                 </tr>
@@ -93,13 +127,21 @@
                   <tr *ngFor="let v of patologia.videos let i=index " >
                     <td> {{i+1}} </td>
                     <td class="title">
+                        <b class=" tablesaw-cell-label">Titulo</b>
+                        <a href="{{v}}" target="_blank"> {{ v.titulo }}</a>
+                      </td>
+                      <td class="title">
+                          <b class=" tablesaw-cell-label">Descripcion</b>
+                          <a href="{{v}}" target="_blank"> {{ v.descripcion | truncar:[50, ' ...'] }}</a>
+                        </td>
+                    <td class="title">
                       <b class=" tablesaw-cell-label">Link</b>
-                      <a href="{{v}}" target="_blank"> {{ v }}</a>
+                      <a [href]="'https://www.youtube.com/watch?v='+v.video" target="_blank"> {{ v.video }}</a>
                     </td>
                     <td class="title">
                       <div aria-label="Acciones" class="btn-group" role="group">
-                          <button  class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
-                             placement="top" ngbTooltip="Eliminar" (click)="deleteVideo(v)"></i></button>
+                          <button (click)="deleteVideo(v)" class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                             placement="top" ngbTooltip="Eliminar" ></i></button>
                       </div>
                     </td>
                   </tr>

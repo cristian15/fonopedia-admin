@@ -17,7 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { PatologiaComponent } from './patologia/patologia.component';
 import { AgregarPatologiaComponent } from './agregar-patologia/agregar-patologia.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnviarSubscripcionComponent } from './enviar-subscripcion/enviar-subscripcion.component';
 import { PaginacionComponent } from '../share/paginacion/paginacion.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -29,6 +29,7 @@ import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.componen
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     ADMIN_ROUTES,
     ShareModule,
     PipesModule,

@@ -6,10 +6,11 @@ export class Patologia {
         public area:                           string,  
         public general:                        string,   
         public referencias:                    string,
-        public videos:                         string[],
+        public videos:                         {titulo: string,video:string, descripcion:string } [],
         public tags:                           string[],
         public audios:                         string[],
         public visitas:                        Date[],
+        public fecha_publicacion:              Date,
         public _id?:                           string
         
         

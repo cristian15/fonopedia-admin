@@ -6,32 +6,38 @@
     </button>
   </div>
   <div class="modal-body">
-      <form>
+      <form [formGroup]="myForm" (ngSubmit)="guardar(modal)" novalidate >
           <div class="form-group">
-              <label >Nombre</label>
-              <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control"  >
+              <label >Nombre(*)</label>
+              <input formControlName="nombre" type="text"  name="nombre" class="form-control"  >
+            </div>
+           
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Email(*)</label>
+              <input formControlName="email" type="email"  
+               [(ngModel)]="email" name="email" class="form-control" >
+            </div>
+            <div class="alert alert-danger"
+                  *ngIf="myForm.get('email').hasError('email')">Formato no valido</div>
+            <div class="form-group">
+              <label  for="exampleFormControlInput1">Contraseña(*)</label>
+              <input formControlName="password" type="password" name="pass" class="form-control" >
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Email</label>
-              <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-               [(ngModel)]="email" name="email" class="form-control" ngModel #emailref="ngModel" >
+              <label  for="exampleFormControlInput1">Confirmar Contraseña(*)</label>
+              <input formControlName="confirmPassword" type="password"  name="pass" class="form-control" >
             </div>
-            <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="aler alert-danger">
-              <div [hidden]="!emailref.errors?.pattern">
-                Invalid pattern
-              </div> 
-             </div> 
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Contraseña</label>
-              <input type="text" [(ngModel)]="pass" name="pass" class="form-control" >
-            </div>
-        </form>
+            <div class="alert alert-danger"
+                  *ngIf="myForm.controls.confirmPassword.errors?.MatchPassword">Contraseñas no iguales</div>
+
+            <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary" >Guardar</button>
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+      </form>
 
   </div>
   <div class="modal-footer">
-    <button *ngIf="!(emailref.errors &&(emailref.touched || emailref.dirty)) || " 
-    type="button" class="btn btn-primary" (click)="guardar(modal)">Guardar</button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+    
+    
   </div>
 </ng-template>
 

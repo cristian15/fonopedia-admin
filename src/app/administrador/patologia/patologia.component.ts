@@ -4,6 +4,7 @@ import { Patologia } from 'src/app/models/patologia.model';
 import { PatologiasService } from 'src/app/services/patologias.service';
 import swal from 'sweetalert2';
 import { UploadService } from 'src/app/services/service.index';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-patologia',
@@ -14,10 +15,15 @@ export class PatologiaComponent implements OnInit {
   patologia: Patologia;
   filesToUpload: Array<File> = [];
 
+  titulo_video = "";
+  descripcion_video = "";
+  id_video = "";
+
   constructor(
             private _patologiaService: PatologiasService,
             private route: ActivatedRoute,   // para obter paramertros de la url
-            private _uploadService: UploadService
+            private _uploadService: UploadService,
+            public modalService: NgbModal
     ) { }
 
   ngOnInit() {
@@ -77,6 +83,16 @@ export class PatologiaComponent implements OnInit {
   deleteAudio(a){
     this.patologia.audios.splice(this.patologia.audios.indexOf(a),1);
     this._patologiaService.editPatologia(this.patologia._id, this.patologia).subscribe();
+  }
+
+  AgregarVideo(c){
+    this.patologia.videos.push({video:this.id_video, titulo: this.titulo_video, descripcion: this.descripcion_video});
+    this._patologiaService.editPatologia(this.patologia._id, this.patologia).subscribe(res=>{
+      this.titulo_video = "";
+      this.id_video = "";
+      this.descripcion_video = "";
+    });
+    c.close();
   }
 
   fileChangeEvent(filesInput: any) {     // agrega los archivos al arreglo para luego subirlos al servidor
