@@ -1,0 +1,19 @@
+<div class="row" style="height:30%;">
+    <div class="col-md-6">
+        <div class="card">
+            .card-
+        </div>
+        <div style="display: block;">
+        <canvas baseChart height="50%"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+                </canvas>
+        </div>
+    </div>
+</div>

@@ -21,7 +21,8 @@
             </div>  
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Descripción</label>
-              <textarea class="form-control" [(ngModel)]="descripcion" name="descripcion" rows="5"></textarea>
+              <!-- <textarea class="form-control" [(ngModel)]="descripcion" name="descripcion" rows="5"></textarea> -->
+              <ngx-wig [(ngModel)]="descripcion" name="descripcion" [content]="text1"></ngx-wig>
             </div>
         </form>
 

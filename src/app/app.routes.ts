@@ -4,9 +4,10 @@ import { LoginComponent } from './autenticacion/login/login.component';
 import { InicioComponent } from './administrador/inicio/inicio.component';
 import { AdministradorModule } from './administrador/administrador.module';
 import { SubcritosComponent } from './administrador/subcritos/subcritos.component';
+import { PatologiasComponent } from './administrador/patologias/patologias.component';
 
 export const appRoutes: Routes = [
-    {path: '', component: InicioComponent,  canActivate:[AuthGuard] },
+    {path: '', component: PatologiasComponent,  canActivate:[AuthGuard] },
     { path: 'login', component: LoginComponent },
     
     {path: 'patologias', loadChildren: './administrador/administrador.module#AdministradorModule'/*  loadChildren:()=> AdministradorModule  */},

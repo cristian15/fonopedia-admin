@@ -23,6 +23,10 @@ import { PaginacionComponent } from '../share/paginacion/paginacion.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AgregarUsuarioComponent } from './agregar-usuario/agregar-usuario.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
+import {NgxWigModule} from 'ngx-wig';
+
 
 @NgModule({
   imports: [
@@ -36,7 +40,10 @@ import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.componen
     MatTableModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ChartsModule,
+    NgxWigModule
+    
   ],
   declarations: [
     InicioComponent,

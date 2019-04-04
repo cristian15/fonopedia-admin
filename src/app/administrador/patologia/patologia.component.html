@@ -18,7 +18,8 @@
       </div>  
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Descripción</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.descripcion" rows="5"> {{patologia.descripcion}} </textarea>
+        <!-- <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.descripcion" rows="5"> {{patologia.descripcion}} </textarea> -->
+        <ngx-wig [(ngModel)]="patologia.descripcion" name="descripcion" [content]="text1"></ngx-wig>
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Referencias</label>
@@ -104,7 +105,7 @@
         </ng-template>
         
       <div class="row col-12">
-        <div class="col-6">
+        <div class="col-8">
           <legend>Videos</legend>
           <button type="button" class="btn btn-success" (click)="modalService.open(content, { size: 'lg' })">Agregar Video</button>
           <!-- <div class="input-group mb-3">
@@ -148,39 +149,7 @@
               </tbody>
             </table>
         </div>
-        <div class="col-6">
-          <legend>Audios</legend>
-          <div class="input-group mb-3">
-              <input #audio type="text" class="form-control" name="tags">
-              <div class="input-group-append">
-                  <button type="button" class="btn btn-success" (click)="addAudio(audio.value)">Agregar Audio</button>
-              </div>
-            </div>
-          <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
-              <thead>
-                <tr>
-                  <th data-tablesaw-sortable-col></th>
-                  <th data-tablesaw-sortable-col>Link</th>  
-                  <th data-tablesaw-sortable-col></th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let a of patologia.audios let i=index" >
-                    <td>{{i+1}} </td>
-                    <td class="title">
-                      <b class=" tablesaw-cell-label">Link</b>
-                      <a href="{{a}}" target="_blank"> {{ a }}</a>
-                    </td>
-                    <td class="title">
-                      <div aria-label="Acciones" class="btn-group" role="group">
-                          <button  class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
-                             placement="top" ngbTooltip="Eliminar" (click)="deleteAudio(a)"></i></button>
-                      </div>
-                    </td>
-                  </tr>
-              </tbody>
-            </table>
-        </div>
+        
       </div>
     </mat-tab>
   </mat-tab-group>

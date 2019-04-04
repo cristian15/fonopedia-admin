@@ -20,7 +20,6 @@ import { UploadService } from './services/service.index';
 import { PipesModule } from './pipes/pipes.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
