@@ -23,7 +23,8 @@
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Referencias</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.referencias" rows="3"> {{patologia.referencias}} </textarea>
+        <ngx-wig [(ngModel)]="patologia.referencias" name="referencias" [content]="text1"></ngx-wig>
+        <!-- <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="patologia.referencias" rows="3"> {{patologia.referencias}} </textarea> -->
       </div>
     </mat-tab>
     <mat-tab label="Fotos/Tags"> 
