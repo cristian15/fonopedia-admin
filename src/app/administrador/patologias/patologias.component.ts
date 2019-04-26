@@ -6,7 +6,7 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-patologias',
   templateUrl: './patologias.component.html',
-  styles: []
+  styleUrls: ['patologias.component.css']
 })
 export class PatologiasComponent implements OnInit {
 
@@ -15,6 +15,7 @@ export class PatologiasComponent implements OnInit {
   offset = 0;
   limit = 10;
 
+  buscar = "";
   patologias = [];
   rows = [];
   ngOnInit() {

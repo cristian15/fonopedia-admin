@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImagenUsuarioPipe } from './imagen-usuario.pipe';
 import { ImagenPipe } from './imagen.pipe';
 import { TruncarPipe } from './truncar.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   imports: [
@@ -11,12 +12,14 @@ import { TruncarPipe } from './truncar.pipe';
   declarations: [
     ImagenUsuarioPipe,
     ImagenPipe,
-    TruncarPipe
+    TruncarPipe,
+    SearchPipe
   ],
   exports:[
     ImagenUsuarioPipe,
     ImagenPipe,
-    TruncarPipe
+    TruncarPipe,
+    SearchPipe
   ]
   
 })

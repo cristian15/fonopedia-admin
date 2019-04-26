@@ -1,3 +1,9 @@
+<form class="form-inline md-form form-sm active-cyan-2">
+  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Buscar..." aria-label="Search"
+    mdbInput [(ngModel)]="buscar" name="buscar">
+  <i class="fa fa-search" aria-hidden="true"></i>
+</form>
+<hr>
 <app-agregar-patologia></app-agregar-patologia>
 <br><br>
 <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
@@ -12,7 +18,7 @@
   </thead>
   <tbody>
     
-      <tr *ngFor="let p of rows " >
+      <tr *ngFor="let p of rows | search: buscar" >
         <td class="title">
           <b class=" tablesaw-cell-label">Area</b>
           {{ p.area | titlecase  }}

@@ -19,6 +19,7 @@ export class PatologiaComponent implements OnInit {
   descripcion_video = "";
   id_video = "";
 
+  edit_video = {};
   constructor(
             private _patologiaService: PatologiasService,
             private route: ActivatedRoute,   // para obter paramertros de la url
@@ -93,6 +94,18 @@ export class PatologiaComponent implements OnInit {
       this.descripcion_video = "";
     });
     c.close();
+  }
+  editarVideo(v, modalEditVideo){
+    this.edit_video = v;
+    console.log(v);
+    this.modalService.open(modalEditVideo, { size: 'lg' })
+  }
+  editVideo(close_modal){
+    console.log("PAT:::", this.patologia);
+    this._patologiaService.editPatologia(this.patologia._id, this.patologia).subscribe(res=>{
+      swal('Video Actualizado!', '' , 'success');
+     });
+    close_modal.close();
   }
 
   fileChangeEvent(filesInput: any) {     // agrega los archivos al arreglo para luego subirlos al servidor

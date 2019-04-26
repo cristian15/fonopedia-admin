@@ -104,6 +104,35 @@
             <button type="button" class="btn btn-light" (click)="modalVideo.close('Close click')">Cerrar</button>
           </div>
         </ng-template>
+      <ng-template #contentEditVideo let-modalEditVideo>
+          <div class="modal-header">
+            <h4 class="modal-title">Editar Video</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modalEditVideo.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label >Titulo</label>
+                      <input type="text" [(ngModel)]="edit_video.titulo" name="nombre" class="form-control"  >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">ID Video</label>
+                      <input type="text" [(ngModel)]="edit_video.video" name="area" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Descripción</label>
+                      <textarea class="form-control" [(ngModel)]="edit_video.descripcion" name="descripcion" rows="5"></textarea>
+                    </div>
+                </form>
+        
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="editVideo(modalEditVideo)">Guardar</button>
+            <button type="button" class="btn btn-light" (click)="modalVideo.close('Close click')">Cerrar</button>
+          </div>
+        </ng-template>
         
       <div class="row col-12">
         <div class="col-8">
@@ -112,13 +141,12 @@
           <!-- <div class="input-group mb-3">
               <input id="video" #video type="text" class="form-control" name="tags">
               <div class="input-group-append">
-                  
               </div>
             </div> -->
           <table class="table table-bordered table-hover tablesaw tablesaw-stack" data-tablesaw-mode="stack" data-tablesaw-sortable-switch >
               <thead>
                 <tr>
-                  <th data-tablesaw-sortable-col></th> 
+                  <th data-tablesaw-sortable-col></th>
                   <th data-tablesaw-sortable-col>Titulo</th>
                   <th data-tablesaw-sortable-col>Descripcion</th>
                   <th data-tablesaw-sortable-col>Link</th>  
@@ -144,6 +172,8 @@
                       <div aria-label="Acciones" class="btn-group" role="group">
                           <button (click)="deleteVideo(v)" class="btn btn-danger" type="button"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"
                              placement="top" ngbTooltip="Eliminar" ></i></button>
+                          <button (click)="editarVideo(v, contentEditVideo)" class="btn btn-warning" type="button"><i class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="top" title="Editar"
+                             placement="top" ngbTooltip="Editar" ></i></button>
                       </div>
                     </td>
                   </tr>
