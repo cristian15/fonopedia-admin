@@ -34,11 +34,25 @@ export class PatologiasComponent implements OnInit {
     }        
     this.rows = tempo;
   }
+
   load(){
     this._patologiasService.getPatologias().subscribe(patologias =>{
       this.patologias = patologias;
       this.onPageChange(0);
     });
+  }
+  
+  buscarPatologia(){
+    console.log(this.buscar);
+
+    this.rows =  this.patologias.filter(r =>{
+      return JSON.stringify(r).toLowerCase().includes(this.buscar.toLowerCase());
+    });
+
+    if(this.buscar.length==0){
+      this.rows = this.patologias;
+      this.onPageChange(0);
+    }
   }
 
   borrar(p){

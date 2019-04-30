@@ -155,7 +155,12 @@
               </thead>
               <tbody>
                   <tr *ngFor="let v of patologia.videos let i=index " >
-                    <td> {{i+1}} </td>
+                    <td> <div class="row col-12">
+                      <i (click)="subirVideo(i, 1)" *ngIf="i>0" class="fa fa-angle-up" data-toggle="tooltip" data-placement="top" title="Subir"
+                        placement="top" ngbTooltip="Subir" ></i>  {{i+1}}<i (click)="subirVideo(i, -1)" *ngIf="i<patologia.videos.length-1" class="fa fa-angle-down" data-toggle="tooltip" data-placement="top" title="Bajar"
+                     placement="top" ngbTooltip="Bajar" ></i> 
+                    </div>
+                    </td>
                     <td class="title">
                         <b class=" tablesaw-cell-label">Titulo</b>
                         <a href="{{v}}" target="_blank"> {{ v.titulo }}</a>

@@ -36,6 +36,13 @@ export class PatologiaComponent implements OnInit {
       
   });    
   }
+  subirVideo(i, s){
+     let v = this.patologia.videos[i-1*s];
+     this.patologia.videos[i-1*s] = this.patologia.videos[i];
+     this.patologia.videos[i] = v;
+
+     this.actualizarInfo();
+  }
   actualizar(){
     if(this.filesToUpload.length>0){
       this._patologiaService.editPatologia(this.patologia._id, this.patologia, this.filesToUpload).subscribe(p =>{

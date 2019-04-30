@@ -1,6 +1,6 @@
 <form class="form-inline md-form form-sm active-cyan-2">
   <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Buscar..." aria-label="Search"
-    mdbInput [(ngModel)]="buscar" name="buscar">
+    mdbInput [(ngModel)]="buscar" name="buscar" (keyup)="buscarPatologia()" >
   <i class="fa fa-search" aria-hidden="true"></i>
 </form>
 <hr>
@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     
-      <tr *ngFor="let p of rows | search: buscar" >
+      <tr *ngFor="let p of rows ">
         <td class="title">
           <b class=" tablesaw-cell-label">Area</b>
           {{ p.area | titlecase  }}
@@ -45,13 +45,14 @@
                  placement="top" ngbTooltip="Eliminar" ></i></button>
           </div>
         </td>
-        
-          
       </tr>
   </tbody>
-  <tfoot *ngIf="patologias">
+  <tfoot *ngIf="patologias&&buscar.length==0">
     <b>Total {{patologias.length}} </b> 
+  </tfoot>
+  <tfoot *ngIf="rows&&buscar.length>0">
+    <b>Total Resultados {{rows.length}} </b> 
   </tfoot>
 </table>
 
-<app-paginacion [offset]="offset" [limit]="limit" [size]="patologias.length" (pageChange)="onPageChange($event)"></app-paginacion>
+<app-paginacion *ngIf="buscar.length==0" [offset]="offset" [limit]="limit" [size]="patologias.length" (pageChange)="onPageChange($event)"></app-paginacion>
